@@ -3,7 +3,7 @@
     <div>
         <select name="category_id">
             {%for category in categories %}}
-                <option value="{{category.id}}" {%if product.category_id == category.id %} selected{%endif%}>
+                <option value="{{category.id}}" {%if recipe.category_id == category.id %} selected{%endif%}>
                     {{category.name}}
                 </option>
                 {%endfor%}
@@ -79,18 +79,16 @@
 <div class="item">
     <div >Informações Adicionais</div>
     <div>
-        <textarea name="description" cols="2" rows="2">
-            {{recipe.description}}
-        </textarea>
+        <textarea name="description" cols="2" rows="2">{{recipe.description}}</textarea>
     </div>
 </div>
 
-{%if product.status%}
+{%if (recipe.status =='1') or (recipe.status =='0') %}
     <div class="item">
         <div>Disponivel</div>
         <div>
-            <span><input type="radio" name="status" value="1" {% if product.status == '1'%} checked="checked" {% endif %}>Sim</span>
-            <span><input type="radio" name="status" value="0" {% if product.status == '0'%} checked="checked" {% endif %}>Não</span>
+            <span><input type="radio" name="status" value="1" {% if recipe.status == '1'%} checked="checked" {% endif %}>Sim</span>
+            <span><input type="radio" name="status" value="0" {% if recipe.status == '0'%} checked="checked" {% endif %}>Não</span>
         </div>
     </div>
 {%endif%}

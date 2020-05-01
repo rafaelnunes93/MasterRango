@@ -9,9 +9,16 @@ routes.get('/',function(req, res){
 })
 
 routes.get('/recipes/create',recipesController.create)
+routes.get('/recipes/:id/edit',recipesController.edit)
+
+
 routes.post('/recipes',recipesController.post)
+routes.put('/recipes',recipesController.put)
+routes.delete('/recipes',recipesController.delete)
 
 
+
+//ALIAS
 routes.get('/ads/create',function(req,res){
     return res.redirect("/recipes/create")
 })

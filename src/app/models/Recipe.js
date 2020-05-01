@@ -20,7 +20,39 @@ module.exports = {
 
         const values = [
             data.category_id,
-            2,
+            data.user_id || 1,
+            data.title,
+            data.ingredients,
+            data.preparation,
+            data.description,
+            data.quantity,
+            data.time,
+            data.status || 0,
+        ]
+
+        return db.query(query,values)
+    },
+
+    find(id){
+        return db.query('SELECT * FROM recipes WHERE id = $1',[id])
+    },
+
+    update(data){
+        const query = `
+            UPDATE recipes SET
+                category_id=($1),
+                title=($2),
+                ingredients=($3),
+                preparation=($4),
+                description=($5),
+                quantity=($6),
+                time=($7),
+                status=($8)
+            WHERE id = $9    
+        `
+
+        const values = [
+            data.category_id,
             data.title,
             data.ingredients,
             data.preparation,
@@ -28,8 +60,14 @@ module.exports = {
             data.quantity,
             data.time,
             data.status,
+            data.id
         ]
 
         return db.query(query,values)
+
+    },
+
+    delete(id){
+        return db.query('DELETE FROM recipes WHERE id = $1',[id] )
     }
 }

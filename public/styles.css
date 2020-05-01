@@ -114,6 +114,25 @@ body{
 }
 
 
+.button.edit{
+    background-color:var(--secondary-color);
+}
+
+
+.button.delete{
+    background-color: lightgray;
+}
+
+
+.button.edit:hover{
+    background-color:#065ac1;
+}
+
+
+.button.delete:hover{
+    background-color: rgb(223, 62, 62);
+}
+
 
  /* ===== HEADER ====  */
 

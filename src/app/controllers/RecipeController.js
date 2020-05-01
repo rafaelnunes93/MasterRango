@@ -39,6 +39,48 @@ module.exports = {
 
     },
 
+    async edit(req,res){
+        let results = await Recipe.find(req.params.id)
+        const recipe = results.rows[0]
+
+        if(!recipe) return res.send("recipe not found")       
+
+        results = await Category.all()
+        const categories = results.rows
+
+        return res.render("recipes/edit.njk",{recipe,categories})
+    },
+
+    async put(req,res){
+
+
+        const keys = Object.keys(req.body)
+
+        for(key of keys){
+            if(req.body[key] ==""){
+                return res.send('Please, fill all fields!')
+            }
+        }       
+
+        await Recipe.update(req.body)
+
+        return res.redirect(`recipes/${req.body.id}/edit`)
+
+    },
+
+
+    async delete(req,res){
+        await Recipe.delete(req.body.id)
+
+        return res.redirect('/recipes/create')
+    }
+
+
+
+
+
+
+
 
 
 }

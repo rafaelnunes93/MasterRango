@@ -1,7 +1,7 @@
 CREATE TABLE "recipes" (
   "id" SERIAL PRIMARY KEY,
-  "category_id" int UNIQUE,
-  "user_id" int UNIQUE,
+  "category_id" int NOT NULL,
+  "user_id" int ,
   "title" text NOT NULL,
   "ingredients" text[],
   "preparation" text[],
@@ -20,7 +20,7 @@ CREATE TABLE "files" (
   "id" SERIAL PRIMARY KEY,
   "name" text,
   "path" text NOT NULL,
-  "recipes_id" int UNIQUE
+  "recipes_id" int 
 );
 
 ALTER TABLE "recipes" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
