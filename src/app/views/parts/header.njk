@@ -1,40 +1,89 @@
 <header>
 
+    <div class="topheader">
+        <h4>Ja possui uma conta ? <span><a href="#">ENTRAR</a></span> </h4>
+    </div>
+
     <div class="container">
         <a href="/">
             <div class="logo">
-                <h1>MasterRango</h1>
-                <h2>As melhores Receitas</h2>
+                <h1>Master Rango</h1>
             </div>
         </a>
 
-         <form class="search" action="/recipes/search">
-        <input type="text" name="filter" placeholder="Buscar por Produtos" {%if search.term %} value="{{search.term}}" {% endif %}>
+        <form class="search" action="/recipes/search">
+            <input type="text" name="filter" placeholder="Buscar por Produtos" {%if search.term %} value="{{search.term}}" {% endif %}>
 
-    </form>
+        </form>
 
-    <nav class="primary">
-        <ul>
-            <li>
-                <a href=" ads/create">
-                    <i class="material-icons">add</i>
-                   Nova Receita
-                </a>
-            </li>
+        <nav class="primary">
+            <ul>
+                <li>
+                    <a href=" /ads/create">
+                        <i class="material-icons">add</i>
+                        Nova Receita
+                    </a>
+                </li>
 
-            <li>
-                <a href="/accounts">
-                    <i class="material-icons">account_circle</i>
-                    Minha Conta
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-
+                <li>
+                    <a href="/accounts">
+                        <i class="material-icons">account_circle</i>
+                        Minha Conta
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
 
     </div>
 
-   
+    
+         <nav class="bottom-menu">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i class="material-icons">add</i>
+                        Receitas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="material-icons">add</i>
+                        Categorias
+                    </a>
+                </li>
+
+                 <li>
+                    <a href="#">
+                        <i class="material-icons">add</i>
+                        Livros de Receitas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class="material-icons">account_circle</i>
+                        Dicas
+                    </a>
+                </li>
+
+                
+                <li>
+                    <a href="#">
+                        <i class="material-icons">account_circle</i>
+                        Chefs
+                    </a>
+                </li>
+
+                
+                <li>
+                    <a href="#">
+                        <i class="material-icons">account_circle</i>
+                        Especiais
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
 </header>

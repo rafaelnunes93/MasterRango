@@ -136,19 +136,32 @@ body{
 
  /* ===== HEADER ====  */
 
+ .topheader{
+     width: 100%;
+     height: 25px;
+     background-color: #a92c2a;
+     top: 0;
+     position: absolute;
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+ }
+
+ .topheader h4{
+    margin-right: 15%;
+}
+
 header,footer{
-    background-color: black;
+    background-color: #dd3737;
     color: white;
-
     width: 100%;
-    padding: 32px 0;
-
+    padding: 35px 0;
     text-align: center;
 }
 
 header div.container{
     display: grid;
-    grid-template-columns: 220px auto 280px;
+    grid-template-columns: 230px auto 260px;
     align-items: center;
     grid-gap: 24px;
 }
@@ -211,6 +224,32 @@ header div.container a {
   nav.primary ul li a i{
       margin-right: 8px;
   }
+
+  .bottom-menu{
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+
+.bottom-menu ul{
+    display: flex;
+
+  } 
+  .bottom-menu ul li a{
+    display: block;
+	padding: 20px 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+	color:var(--primary-color);
+}
+
+  .bottom-menu ul li a:hover{
+    background-color: var(--primary-color);
+    color: white;
+}
 
 
 
