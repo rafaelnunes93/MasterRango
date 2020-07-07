@@ -1,4 +1,18 @@
 <div class="item">
+    <div>ENVIAR FOTOS DA RECEITA</div>
+    <div >
+        <div id="photos-upload">
+            <input id="photos-input" type="file" name="fotos" multiple="multiple"
+             accept="image/*" 
+            onchange="PhotosUpload.handleFileInput(event)"
+            />
+            <p>Selecione 6 fotos</p>
+        </div>
+        <div id="photos-preview"></div>
+    </div>
+</div>
+
+<div class="item">
     <div>Categoria</div>
     <div>
         <select name="category_id">
@@ -7,88 +21,87 @@
                     {{category.name}}
                 </option>
                 {%endfor%}
-        </select>
+            </select>
 
-    </div>
-</div>
-
-
-<div class="item">
-    <div>Nome da Receita</div>
-    <div >
-        <input type="text" name="title" value="{{recipe.title}}" placeholder="Escolha um nome para sua receita"/>
-    </div>
-</div>
-
-<div class="item">
-    <div id="ingredients">
-        Ingredientes
-        {% for item in recipe.ingredients %}
-            <div class="ingredient">
-
-                <input type="text" name="ingredients[]" value="{{item}}" placeholder="Novo Ingrediente"/>
-
-            </div>
-        {% else %}
-            <div class="ingredient">
-                <input type="text" name="ingredients[]" value="" placeholder="Novo Ingrediente"/>
-            </div>
-        {% endfor %}
-    </div>
-     <div class="boxbutton">
-        <button type="button" class="add-ingredient  buttonAdd">+ Adicionar</button>
-        <button type="button" class="remove-ingredient buttonRemove">Excluir </button>
-    </div>
-    
-</div>
-
-<div class="item">
-    <div id="preparations">
-        <div >Modo de preparo</div>
-        {% for item in recipe.preparation %}
-            <div class="preparation">
-                <input type="text" name="preparation[]" value="{{item}}" placeholder="Novo passo"/>
-            </div>
-        {% else %}
-            <div class="preparation">
-                <input type="text" name="preparation[]" value="" placeholder="Novo Passo"/>
-            </div>
-        {% endfor %}
-    </div>
-    <div class="boxbutton">
-        <button type="button" class="add-preparation buttonAdd">+ Adicionar</button>
-         <button type="button" class="remove-preparation buttonRemove">Excluir </button>
-    </div>
-    
-</div>
-
-<div class="item">
-    <div>Porções:</div>
-    <div>
-        <input type="number" name="quantity" placeholder="" value="{{recipe.quantity}}">
-    </div>
-</div>
-
-<div class="item">
-    <div>Tempo de preparo:</div>
-    <div>
-        <input type="number" name="time" placeholder="Tempo de preparo(Ex 120)" value="{{recipe.time}}">
-    </div>
-</div>
-
-<div class="item">
-    <div >Informações Adicionais</div>
-    <div>
-        <textarea name="description" cols="2" rows="2">{{recipe.description}}</textarea>
-    </div>
-</div>
-
-{%if (recipe.status =='1') or (recipe.status =='0') %}
-    <div class="item">
-        <div>Disponivel</div>
-        <div>
-            <span><input type="radio" name="status" value="1" {% if recipe.status == '1'%} checked="checked" {% endif %}>Sim</span>
-            <span><input type="radio" name="status" value="0" {% if recipe.status == '0'%} checked="checked" {% endif %}>Não</span>
         </div>
     </div>
-{%endif%}
+
+    <div class="item">
+        <div>Nome da Receita</div>
+        <div >
+            <input type="text" name="title" value="{{recipe.title}}" placeholder="Escolha um nome para sua receita"/>
+        </div>
+    </div>
+
+    <div class="item">
+        <div id="ingredients">
+            Ingredientes
+            {% for item in recipe.ingredients %}
+                <div class="ingredient">
+
+                    <input type="text" name="ingredients[]" value="{{item}}" placeholder="Novo Ingrediente"/>
+
+                </div>
+            {% else %}
+                <div class="ingredient">
+                    <input type="text" name="ingredients[]" value="" placeholder="Novo Ingrediente"/>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="boxbutton">
+            <button type="button" class="add-ingredient  buttonAdd">+ Adicionar</button>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="item">
+        <div id="preparations">
+            <div >Modo de preparo</div>
+            {% for item in recipe.preparation %}
+                <div class="preparation">
+                    <input type="text" name="preparation[]" value="{{item}}" placeholder="Novo passo"/>
+                </div>
+            {% else %}
+                <div class="preparation">
+                    <input type="text" name="preparation[]" value="" placeholder="Novo Passo"/>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="boxbutton">
+            <button type="button" class="add-preparation buttonAdd">+ Adicionar</button>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="item">
+        <div>Porções:</div>
+        <div>
+            <input type="number" name="quantity" placeholder="" value="{{recipe.quantity}}">
+        </div>
+    </div>
+
+    <div class="item">
+        <div>Tempo de preparo:</div>
+        <div>
+            <input type="number" name="time" placeholder="Tempo de preparo(Ex 120)" value="{{recipe.time}}">
+        </div>
+    </div>
+
+    <div class="item">
+        <div >Informações Adicionais</div>
+        <div>
+            <textarea name="description" cols="2" rows="2">{{recipe.description}}</textarea>
+        </div>
+    </div>
+
+    {%if (recipe.status =='1') or (recipe.status =='0') %}
+        <div class="item">
+            <div>Disponivel</div>
+            <div>
+                <span><input type="radio" name="status" value="1" {% if recipe.status == '1'%} checked="checked" {% endif %}>Sim</span>
+                <span><input type="radio" name="status" value="0" {% if recipe.status == '0'%} checked="checked" {% endif %}>Não</span>
+            </div>
+        </div>
+        {%endif%}

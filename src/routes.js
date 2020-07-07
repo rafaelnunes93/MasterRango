@@ -8,6 +8,7 @@ routes.get('/',function(req, res){
     return res.render("layout.njk");
 })
 
+//WEB
 routes.get('/recipes/create',recipesController.create)
 routes.get('/recipes/:id/edit',recipesController.edit)
 
