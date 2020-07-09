@@ -23,6 +23,8 @@ CREATE TABLE "files" (
   "recipes_id" int 
 );
 
+
+
 ALTER TABLE "recipes" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
 
 ALTER TABLE "files" ADD FOREIGN KEY ("recipes_id") REFERENCES "recipes" ("id");

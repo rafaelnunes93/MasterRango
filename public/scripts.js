@@ -27,7 +27,7 @@ const PhotosUpload = {
         reader.readAsDataURL(file)
     })   
 
-    PhotosUpload.input.target.files = PhotosUpload.getAllFiles();
+    PhotosUpload.input.files = PhotosUpload.getAllFiles();
 
   },
   hasLimite(event){

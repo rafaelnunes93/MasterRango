@@ -1,5 +1,6 @@
 const Category = require('../models/Category')
 const Recipe = require('../models/Recipe')
+const File = require('../models/File');
 
 module.exports = {
     create(req,res){
@@ -25,17 +26,24 @@ module.exports = {
 
         for(key of keys){
             if(req.body[key] ==""){
-                return res.send('Please, fill all fields!')
+                return res.send('Por Favor, Preencha todos os campos!')
             }
         }
 
+        if(req.files.length == 0)
+            return res.send('Por Favor, Envie pelo menos uma imagem.')
+     
+
         let results = await Recipe.create(req.body)
-        const recipestId = results.rows[0].id
+        const recipesId = results.rows[0].id
 
-        result = await Category.all()
-        const categories = results.rows
+        const filesPromise = req.files.map(file =>
+            File.create({name: file.filename, path: file.path, recipes_id:recipesId }))
+       await Promise.all(filesPromise)
 
-        return res.render("recipes/create.njk",{recipestId, categories})
+
+            //lembrar de mudar para redirecionar para a pagina inicial (Index)
+        return res.redirect(`/recipes/${recipesId}/edit`)
 
     },
 
