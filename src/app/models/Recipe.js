@@ -1,4 +1,5 @@
 const db = require('../../config/db')
+const { FileSystemLoader } = require('nunjucks')
 
 
 module.exports = {
@@ -69,5 +70,11 @@ module.exports = {
 
     delete(id){
         return db.query('DELETE FROM recipes WHERE id = $1',[id] )
+    },
+
+    files(id){
+        return db.query(`
+            SELECT * FROM files WHERE recipes_id = $1
+            `,[id])
     }
 }

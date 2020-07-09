@@ -25,7 +25,7 @@ module.exports = {
         const keys = Object.keys(req.body)
 
         for(key of keys){
-            if(req.body[key] ==""){
+            if(req.body[key] == ""){
                 return res.send('Por Favor, Preencha todos os campos!')
             }
         }
@@ -53,22 +53,48 @@ module.exports = {
 
         if(!recipe) return res.send("recipe not found")       
 
+        // get categorias 
         results = await Category.all()
         const categories = results.rows
 
-        return res.render("recipes/edit.njk",{recipe,categories})
+        // get images
+        results = await Recipe.files(recipe.id)
+        let files = results.rows
+        files = files.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`
+        }))
+
+        return res.render("recipes/edit.njk",{recipe,categories,files})
     },
 
     async put(req,res){
 
 
-        const keys = Object.keys(req.body)
+            // const keys = Object.keys(req.body)
 
-        for(key of keys){
-            if(req.body[key] ==""){
-                return res.send('Please, fill all fields!')
-            }
-        }       
+            // for(key of keys){
+            //     if(req.body[key] ==""){
+            //         return res.send('Please, fill all fields!')
+            //     }
+            // }       
+
+        if(req.files.length != 0){
+            const newFilesPromise = req.files.map(file =>
+                    File.create({...file, recipes_id: req.body.id }))
+
+                    await Promise.all(newFilesPromise)
+        }
+
+        if(req.body.removed_files){
+            const removedFiles = req.body.removed_files.split(",")
+            const lastIndex = removedFiles.length - 1
+            removedFiles.splice(lastIndex, 1)
+
+            const removedFilesPromise = removedFiles.map(id => File.delete(id))
+
+            await Promise.all(removedFilesPromise)
+        }
 
         await Recipe.update(req.body)
 
