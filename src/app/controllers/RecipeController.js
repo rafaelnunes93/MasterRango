@@ -47,6 +47,16 @@ module.exports = {
 
     },
 
+    async show(req,res){
+
+        let results = await Recipe.find(req.params.id)
+        const recipes = results.rows[0]
+
+        if(!recipes) return res.send("Receita nao encontrada")
+        
+        return res.render("recipes/show",{recipes})
+    },
+
     async edit(req,res){
         let results = await Recipe.find(req.params.id)
         const recipe = results.rows[0]

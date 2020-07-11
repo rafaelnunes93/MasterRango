@@ -31,6 +31,8 @@ module.exports = {
 
             fs.unlinkSync(file.path)
 
+            if(err) throw err
+
             return db.query(`
             DELETE FROM files WHERE id = $1
         `, [id])

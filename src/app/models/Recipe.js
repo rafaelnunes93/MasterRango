@@ -14,8 +14,9 @@ module.exports = {
                 description,
                 quantity,
                 time,
-                status
-            )VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
+                status,
+                dificulty
+            )VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
             RETURNING id
         `
 
@@ -29,6 +30,8 @@ module.exports = {
             data.quantity,
             data.time,
             data.status || 0,
+            data.dificulty
+
         ]
 
         return db.query(query,values)
@@ -48,8 +51,9 @@ module.exports = {
                 description=($5),
                 quantity=($6),
                 time=($7),
-                status=($8)
-            WHERE id = $9    
+                status=($8),
+                dificulty=($9)
+            WHERE id = $10    
         `
 
         const values = [
@@ -61,6 +65,7 @@ module.exports = {
             data.quantity,
             data.time,
             data.status,
+            data.dificulty,
             data.id
         ]
 

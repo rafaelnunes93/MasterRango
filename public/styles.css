@@ -24,6 +24,8 @@ html,body{
 body{
     font-family: 'Roboto',sans-serif;
     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
 }
 
 .container{
@@ -151,12 +153,24 @@ body{
     margin-right: 15%;
 }
 
+header{
+    height: 180px;
+}
+
 header,footer{
+    display: flex;
     background-color: #dd3737;
     color: white;
     width: 100%;
-    padding: 35px 0;
+    padding: 35px 0;    
     text-align: center;
+    justify-content: center;
+    position:relative;
+}
+
+footer{
+    margin-top: auto;
+    height: 90px;
 }
 
 header div.container{
@@ -178,6 +192,7 @@ header div.container a {
     color: white;
     font-size: 36px;
     line-height: 46px;
+    text-shadow: black 0.1em 0.1em 0.2em
 }
 
 .logo h2{
@@ -232,6 +247,7 @@ header div.container a {
     justify-content:center;
     align-items: center;
     position: absolute;
+    bottom: 0;
 }
 
 

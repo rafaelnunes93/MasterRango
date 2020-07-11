@@ -98,6 +98,20 @@
     </div>
 </div>
 
+
+<div class="item">
+    <div>Dificuldade</div>
+    <div>
+        <select name="dificulty">
+            
+            <option value="Facil"   {%if recipe.dificulty  == "Facil"%}   selected{%endif%}>Facil</option>
+            <option value="Media"   {%if recipe.dificulty  == "Media"%}   selected{%endif%}>Media</option>
+            <option value="Dificil" {%if recipe.dificulty  == "Dificil"%} selected{%endif%}>Dificil</option>
+           
+        </select>
+    </div>
+</div>
+
 <div class="item">
     <div >Informações Adicionais</div>
     <div>

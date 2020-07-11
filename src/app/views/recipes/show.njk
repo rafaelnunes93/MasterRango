@@ -1,0 +1,115 @@
+{% extends "layout.njk" %}
+
+{%block head%}
+    <title>{{recipes.title}}</title>
+{% endblock %}
+
+{% block content %}
+    <section class="container" id="recipes">
+        <div id="card">
+
+            <div class="cards-title">
+                <p>{{recipes.title}}</p>
+            </div>
+
+            <div class="gallery">
+                <div class="cards-image">
+                    <img src="http://placehold.it/850x400?text=RECEITA SEM FOTO" alt="Imagem de {{recipes.image}}">
+                </div>
+            </div>
+
+            <div class="receitas-info">
+
+                <div class="cards-user-name">  
+                    <div>                       
+                        <img src="http://placehold.it/60x60?text=RECEITA SEM FOTO" alt="">
+                    </div> 
+
+                    <div class="userInfo">
+                        <p>Rafael Nunes dos Santos</p>   
+                        <span>Nivel: Master Chef</span> 
+                    </div>
+                    
+                                       
+                </div>
+
+                
+                <div class="cards-dificuldade">    
+                    <i class="material-icons">add</i>           
+                    <p>Dificuldade:</p>
+                    <span>{{recipes.dificulty}} </span>
+                </div>
+                
+                <div class="cards-tempo">    
+                    <i class="material-icons">add</i>  
+                    <p>Tempo:</p>
+                    <span>{{recipes.time}} Min</span>
+                </div>
+
+                <div class="cards-rendimento"> 
+                    <i class="material-icons">add</i>  
+                    <p>Rendimento:</p>
+                    <span>{{recipes.quantity}} Porções</span>
+                </div>
+
+                <div class="cards-likes">
+                    <i class="material-icons">add</i> 
+                    <p>Likes:</p>
+                    <span>50</span>
+                </div>
+                 <div class="cards-nota">
+                    <i class="material-icons">add</i> 
+                    <p>Nota:</p>
+                    <span>10</span>
+                </div>
+
+            </div>
+
+
+
+            
+        </div>
+
+        <div id="ingredients" class="topic">
+            <div>
+                <h2>Ingredientes</h2>
+                <span>ESCONDER</span>
+            </div>
+            <div class="topic-content">
+                <ul>
+                    {% for ingredient in recipes.ingredients %}
+                        <li>{{ingredient}}</li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div id="preparation" class="topic">
+            <div>
+                <h2>Modo de Preparo</h2>
+                <span>ESCONDER</span>
+            </div>
+
+            <div class="topic-content">
+                <ul>
+                    {% for preparation in recipes.preparation %}
+                        <li>{{preparation}}</li>                         
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div id="information" class="topic">
+            <div>
+                <h2>Informações adicionais</h2>
+                <span>ESCONDER</span>
+            </div>
+
+            <div class="topic-content">
+                <p>{{recipes.description}}</p>             
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

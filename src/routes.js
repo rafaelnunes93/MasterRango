@@ -12,6 +12,7 @@ routes.get('/',function(req, res){
 //WEB
 routes.get('/recipes/create',recipesController.create)
 routes.get('/recipes/:id/edit',recipesController.edit)
+routes.get('/recipes/:id',recipesController.show)
 
 
 routes.post('/recipes',multer.array("photos",6),recipesController.post)

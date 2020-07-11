@@ -1,0 +1,231 @@
+
+
+#card{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.receitas-info{
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid  #d4d4d4;
+    box-shadow: 2px 5px 4px #d4d4d4;;
+    text-transform: uppercase;
+    color: #CEB98E;
+}
+
+.cards-title{
+    color: #CEB98E;
+}
+
+.cards-user-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px 0 0;
+    padding: 15px;
+    border-right: 2px solid #d4d4d4;
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: column;
+    margin:0 5px;
+    font-size: 16px;
+}
+
+.cards-dificuldade,
+.cards-tempo,
+.cards-rendimento,
+.cards-likes{
+    width: 130px;
+    margin: 0 5px 0 0;
+    border-right: 2px solid #d4d4d4;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    text-align: center;
+}
+
+.cards-nota{
+    width: 130px;
+    margin: 0 5px 0 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    text-align: center;
+}
+
+.receitas-info i{
+    color: #dd3737;
+}
+
+.receitas-info span{
+    color: #dd3737;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+
+#recipes {
+    margin-top: 8%;
+  }
+  
+  #recipes #card p {
+    text-align: center;
+  }
+  
+  #card img {
+    border-radius: 30px 30px;
+  }
+  
+  #recipes #card .cards-title p {
+    font-size: 36px;
+    line-height: 46px;
+    font-weight: bold;
+  }
+  
+   .cards-author p {
+    font-size: 22px;
+    line-height: 32px;
+    filter: brightness(80%);
+  }
+  
+  #recipes #ingredients div,
+  #recipes #preparation div,
+  #recipes #information div {
+    display: flex;
+    margin: 20px 0px;
+  }
+  
+  #recipes #ingredients h2,
+  #recipes #preparation h2,
+  #recipes #information h2 {
+    font-size: 22px;
+    line-height: 32px;
+    margin-left: 8%;
+    text-transform: uppercase;
+  }
+  
+  #recipes #ingredients span,
+  #recipes #information span,
+   #recipes #preparation  span {
+    margin: 10px 0px 0px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #999;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  
+  #recipes #ingredients span:hover,
+  #recipes #information span:hover,
+  #recipes #preparation  span:hover {
+    color: #dd3737;
+    transition: color 200ms;
+  }
+  
+  .topic-content.hidden {
+    display: none !important;
+  }
+
+
+ #ingredients li:first-child {
+    border-top: 1px solid #e9e9e9;
+}
+
+  
+  #recipes #ingredients ul li,
+  #recipes #preparation ul li {
+    border-bottom: 1px solid #e9e9e9;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 7px 0 8px 110px;
+    cursor: pointer;
+    position: relative;
+  }
+
+ 
+
+
+  #recipes #ingredients, #preparation , #information {
+    background-color: #fff;
+    border: 1px solid  #d4d4d4;
+    box-shadow: 2px 5px 4px #d4d4d4;;
+    padding: 39px 0;
+    position: relative;
+    margin: 12px 0 35px;
+    list-style: none;
+    width: 100%;
+
+
+}
+
+#recipes #ingredients ul,
+#preparation ul{
+    position: relative;
+    width: 100%;
+}
+
+/* Linha vermelha no meio da folha */
+#recipes #ingredients:before,  #recipes #ingredients:after , 
+#recipes #preparation:before,  #recipes #preparation:after,
+#recipes #information:before,  #recipes #information:after {
+    content: "";
+    height: 100%;
+    width: 2px;
+    margin-left: 7%;
+    background-color: #ffd4d4;
+    position: absolute;
+    top: 0;
+}
+
+
+   #recipes #ingredients li:before {
+    content: "";
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin-right: 10px;
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #d0d0d0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+
+  
+  #recipes #ingredients li,
+  #recipes #preparation li,
+  #recipes #information p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444;
+  }
+  
+  #recipes #information p {
+    text-align: justify;
+    padding: 7px 20px 8px 40px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-bottom: 1px solid #e9e9e9;
+  }
+
+ 

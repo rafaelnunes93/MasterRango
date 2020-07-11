@@ -109,11 +109,31 @@ const PhotosUpload = {
   
   }
 
+  //Esconder Ingredientes e modo de Preparo
+
+const showHides = document.getElementsByClassName('topic');
+
+for (let showHide of showHides) {
+  const buttonSpan = showHide.querySelector('span');
+
+  buttonSpan.addEventListener('click', function() {
+    if (buttonSpan.innerHTML == "ESCONDER") {
+      showHide.querySelector('.topic-content').classList.add('hidden');
+      buttonSpan.innerHTML = "MOSTRAR"   
+    } else {
+      showHide.querySelector('.topic-content').classList.remove('hidden');
+      buttonSpan.innerHTML = "ESCONDER"
+    }
+  });
+}
 
 
+// ==========================================ADICIONAR Novo Ingrediente===============
+
+
+const ingredients = document.querySelector("#ingredients");
+const fieldContainer = document.querySelectorAll(".ingredient");
 function addIngredient() {
-    const ingredients = document.querySelector("#ingredients");
-    const fieldContainer = document.querySelectorAll(".ingredient");
 
   // Realiza um clone do último ingrediente adicionado
   const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true);
@@ -132,10 +152,9 @@ document.querySelector(".add-ingredient").addEventListener("click", addIngredien
 
 // ==========================================ADICIONAR MODO DE PREPARO===============
 
-
+const preparations = document.querySelector("#preparations");
+const fieldContainerP = document.querySelectorAll(".preparation");
 function addpreparation() {
-    const preparations = document.querySelector("#preparations");
-    const fieldContainerP = document.querySelectorAll(".preparation");
 
   // Realiza um clone do último ingrediente adicionado
   const newFieldP = fieldContainerP[fieldContainerP.length - 1].cloneNode(true);
@@ -153,6 +172,7 @@ document.querySelector(".add-preparation").addEventListener("click", addpreparat
 
 
 
+
 const formDelete = document.querySelector("#form-delete")
 formDelete.addEventListener("submit", function (event) {
   const confirmation = confirm("Deseja deletar?")
@@ -160,5 +180,8 @@ formDelete.addEventListener("submit", function (event) {
     event.preventDefault()
   }
 })
+
+
+
 
 
