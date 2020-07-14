@@ -43,7 +43,7 @@ module.exports = {
 
 
             //lembrar de mudar para redirecionar para a pagina inicial (Index)
-        return res.redirect(`/recipes/${recipesId}/edit`)
+        return res.redirect(`/recipes/${recipesId}`)
 
     },
 
@@ -54,7 +54,15 @@ module.exports = {
 
         if(!recipes) return res.send("Receita nao encontrada")
         
-        return res.render("recipes/show",{recipes})
+        
+
+        results = await Recipe.files(recipes.id)
+        const files = results.rows.map(file => ({
+            ...file,
+            src: `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`
+        }))
+
+        return res.render("recipes/show",{recipes, files})
     },
 
     async edit(req,res){
@@ -81,13 +89,13 @@ module.exports = {
     async put(req,res){
 
 
-            // const keys = Object.keys(req.body)
+            const keys = Object.keys(req.body)
 
-            // for(key of keys){
-            //     if(req.body[key] ==""){
-            //         return res.send('Please, fill all fields!')
-            //     }
-            // }       
+            for(key of keys){
+                if(req.body[key] =="" && key != "removed_files"){
+                    return res.send('Please, fill all fields!')
+                }
+            }       
 
         if(req.files.length != 0){
             const newFilesPromise = req.files.map(file =>
@@ -108,7 +116,7 @@ module.exports = {
 
         await Recipe.update(req.body)
 
-        return res.redirect(`recipes/${req.body.id}/edit`)
+        return res.redirect(`recipes/${req.body.id}`)
 
     },
 

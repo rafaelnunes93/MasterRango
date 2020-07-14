@@ -8,6 +8,7 @@ CREATE TABLE "recipes" (
   "description" text NOT NULL,
   "quantity" int DEFAULT 0,
   "status" int DEFAULT 1,
+  "dificulty" text NOT NULL,
   "created_at" timestamp DEFAULT (now())
 );
 

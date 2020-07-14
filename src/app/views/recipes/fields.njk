@@ -45,29 +45,29 @@
 </div>
 
 <div class="item">
-    <div id="ingredients">
-        Ingredientes
-        {% for item in recipe.ingredients %}
-            <div class="ingredient">
+            <div id="ingredients" class="formItem">
+                <div class="formTitle">Ingredientes</div>
+                {% for item in recipe.ingredients %}
+                    <div class="ingredient">
 
-                <input type="text" name="ingredients[]" value="{{item}}" placeholder="Novo Ingrediente"/>
+                        <input type="text" name="ingredients[]" value="{{item}}" placeholder="Novo Ingrediente"/>
 
+                    </div>
+                {% else %}
+                    <div class="ingredient">
+                        <input type="text" name="ingredients[]" value="" placeholder="Novo Ingrediente"/>
+                    </div>
+                {% endfor %}
             </div>
-        {% else %}
-            <div class="ingredient">
-                <input type="text" name="ingredients[]" value="" placeholder="Novo Ingrediente"/>
-            </div>
-        {% endfor %}
-   
-            <div class="boxbutton">
-                <button type="button" class="add-ingredient  buttonAdd">+ Adicionar</button>
-            </div>
-    </div>
+            <button type="button" class="buttonAdd add-ingredient">Adicionar Ingrediente</button>
+            
 </div>
 
+
+
 <div class="item">
-    <div id="preparations">
-        <div >Modo de preparo </div>
+        <div id="preparations" class="formItem">
+            <div class="formTitle">Modo de preparo</div>
             {% for item in recipe.preparation %}
                 <div class="preparation">
                     <input type="text" name="preparation[]" value="{{item}}" placeholder="Novo passo"/>
@@ -77,12 +77,10 @@
                     <input type="text" name="preparation[]" value="" placeholder="Novo Passo"/>
                 </div>
             {% endfor %}
-        
-        <div class="boxbutton">
-            <button type="button" class="add-preparation buttonAdd">+ Adicionar</button>
         </div>
+        <button type="button" class="add-preparation buttonAdd">Adicionar Novo Passo</button>
+        
     </div>
-</div>
 
 <div class="item">
     <div>Porções:</div>
@@ -127,4 +125,4 @@
             <span><input type="radio" name="status" value="0" {% if recipe.status == '0'%} checked="checked" {% endif %}>Não</span>
         </div>
     </div>
-    {%endif%}
+{%endif%}

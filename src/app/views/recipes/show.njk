@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <section class="container" id="recipes">
+    <section class="recipe-single container" id="recipes">
         <div id="card">
 
             <div class="cards-title">
@@ -13,9 +13,26 @@
             </div>
 
             <div class="gallery">
-                <div class="cards-image">
-                    <img src="http://placehold.it/850x400?text=RECEITA SEM FOTO" alt="Imagem de {{recipes.image}}">
+
+                
+                <div class="gallery-preview">
+                    {%for image in files %}
+                        <img src="{{image.src}}" alt="{{image.name}}" 
+                            {%if loop.index0 == 0 %}
+                                class="active"
+                            {%endif%}
+                        >
+                    {%endfor%}
                 </div>
+
+                <div class="highlight">
+                    {%if not files[0] %}
+                    <img src="http://placehold.it/850x400?text=RECEITA SEM FOTO" alt="Imagem de {{recipes.image}}">
+                    {%else%}
+                        <img src="{{ files[0].src }}" alt="{{ files[0].name }}">
+                    {%endif%}
+                </div>
+
             </div>
 
             <div class="receitas-info">
@@ -35,30 +52,30 @@
 
                 
                 <div class="cards-dificuldade">    
-                    <i class="material-icons">add</i>           
+                    <i class="material-icons">local_fire_department</i>           
                     <p>Dificuldade:</p>
                     <span>{{recipes.dificulty}} </span>
                 </div>
                 
                 <div class="cards-tempo">    
-                    <i class="material-icons">add</i>  
+                    <i class="material-icons">timer</i>  
                     <p>Tempo:</p>
                     <span>{{recipes.time}} Min</span>
                 </div>
 
                 <div class="cards-rendimento"> 
-                    <i class="material-icons">add</i>  
+                    <i class="material-icons">room_service</i>  
                     <p>Rendimento:</p>
                     <span>{{recipes.quantity}} Porções</span>
                 </div>
 
                 <div class="cards-likes">
-                    <i class="material-icons">add</i> 
+                    <i class="material-icons">favorite</i> 
                     <p>Likes:</p>
                     <span>50</span>
                 </div>
                  <div class="cards-nota">
-                    <i class="material-icons">add</i> 
+                    <i class="material-icons">grade</i> 
                     <p>Nota:</p>
                     <span>10</span>
                 </div>
@@ -79,7 +96,6 @@
                 <ul>
                     {% for ingredient in recipes.ingredients %}
                         <li>{{ingredient}}</li>
-
                     {% endfor %}
                 </ul>
             </div>

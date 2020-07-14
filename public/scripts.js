@@ -130,7 +130,6 @@ for (let showHide of showHides) {
 
 // ==========================================ADICIONAR Novo Ingrediente===============
 
-
 const ingredients = document.querySelector("#ingredients");
 const fieldContainer = document.querySelectorAll(".ingredient");
 function addIngredient() {
@@ -149,9 +148,7 @@ function addIngredient() {
 
 document.querySelector(".add-ingredient").addEventListener("click", addIngredient);
 
-
 // ==========================================ADICIONAR MODO DE PREPARO===============
-
 const preparations = document.querySelector("#preparations");
 const fieldContainerP = document.querySelectorAll(".preparation");
 function addpreparation() {

@@ -1,69 +1,77 @@
 <header>
 
     <div class="topheader">
-        <h4>Ja possui uma conta ? <span><a href="#">ENTRAR</a></span> </h4>
+        
     </div>
 
     <div class="container">
+       <div class="primarytop">
         <a href="/">
-            <div class="logo">
-                <h1>Master Rango</h1>
-            </div>
+        <div class="logo">
+            <h1>Master Rango</h1>
+        </div>
         </a>
 
         <form class="search" action="/recipes/search">
             <input type="text" name="filter" placeholder="Buscar por Produtos" {%if search.term %} value="{{search.term}}" {% endif %}>
 
         </form>
+       </div>
 
         <nav class="primary">
             <ul>
                 <li>
                     <a href=" /ads/create">
                         <i class="material-icons">add</i>
-                        Nova Receita
+                        Crie a sua conta
+                    </a>
+                </li>                
+
+                <li>
+                    <a href="/accounts">
+                        <i class="material-icons">login</i>
+                        Entrar
                     </a>
                 </li>
 
                 <li>
-                    <a href="/accounts">
-                        <i class="material-icons">account_circle</i>
-                        Minha Conta
+                    <a href=" /ads/create">
+                        <i class="material-icons">list_alt</i>
+                        Envie uma Nova Receita
                     </a>
                 </li>
             </ul>
         </nav>
-
+           
 
     </div>
 
-    
-         <nav class="bottom-menu">
+    <nav class="bottom-menu">
             <ul>
                 <li>
                     <a href="#">
-                        <i class="material-icons">add</i>
+                        <i class="material-icons">list_alt</i>
                         Receitas
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
-                        <i class="material-icons">add</i>
+                        <i class="material-icons">filter_vintage</i>
                         Categorias
                     </a>
                 </li>
 
                  <li>
                     <a href="#">
-                        <i class="material-icons">add</i>
+                        <i class="material-icons">book</i>
                         Livros de Receitas
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
-                        <i class="material-icons">account_circle</i>
+                        <i class="material-icons">lightbulb</i>
                         Dicas
                     </a>
                 </li>
@@ -71,7 +79,7 @@
                 
                 <li>
                     <a href="#">
-                        <i class="material-icons">account_circle</i>
+                        <i class="material-icons">restaurant_menu</i>
                         Chefs
                     </a>
                 </li>
@@ -79,11 +87,15 @@
                 
                 <li>
                     <a href="#">
-                        <i class="material-icons">account_circle</i>
+                        <i class="material-icons">assistant</i>
                         Especiais
                     </a>
                 </li>
             </ul>
         </nav>
+
+
+    
+      
 
 </header>

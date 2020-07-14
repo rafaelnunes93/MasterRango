@@ -24,6 +24,58 @@
 
 .cards-title{
     color: #CEB98E;
+    border: 1px solid  #d4d4d4;
+    box-shadow: 2px 5px -2px #d4d4d4;;
+}
+
+.recipe-single  .gallery{
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 5px;
+  height: 400px;
+  padding: 10px;
+}
+
+.recipe-single  .highlight {
+  height: 400px;
+  padding: 10px;
+
+}
+
+.recipe-single  .highlight > img{
+  width: 100%;
+  height: 100%;
+
+  object-fit: none;
+  object-position: 50% 50%;
+  border: 1px solid #efefef;
+
+  cursor:zoom-in;
+}
+
+.recipe-single .gallery-preview{
+  height: 400px;
+  padding: 10px;
+}
+
+.recipe-single .gallery-preview img{
+  height: 60px;
+  width: 100%;
+  border-radius: 1px !important;
+  border: 1px solid  #d4d4d4;
+
+  object-fit: cover;
+  /* object-position: 50% 50%;
+  border: 1px solid #efefef; */
+
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.recipe-single .gallery-preview img:hover,
+.recipe-single .gallery-preview img.active{
+  opacity: 1;
+  border: 2px solid  #dd3737;
 }
 
 .cards-user-name{
@@ -55,6 +107,16 @@
     justify-content: center;
     text-align: center;
     text-align: center;
+}
+
+.cards-dificuldade p,
+.cards-tempo p,
+.cards-rendimento p,
+.cards-likes p,
+.cards-nota p{
+    margin: 5px 0;
+    font-size: 13px;
+ 
 }
 
 .cards-nota{
@@ -142,7 +204,8 @@
   }
 
 
- #ingredients li:first-child {
+ #ingredients li:first-child,
+ #preparation li:first-child {
     border-top: 1px solid #e9e9e9;
 }
 
@@ -155,7 +218,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     padding: 7px 0 8px 110px;
-    cursor: pointer;
+    /* cursor: pointer; colocar novamente  */
     position: relative;
   }
 
@@ -221,11 +284,13 @@
   }
   
   #recipes #information p {
+    width: 100%;
     text-align: justify;
-    padding: 7px 20px 8px 40px;
+    padding: 7px 20px 8px 100px;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     border-bottom: 1px solid #e9e9e9;
+    border-top: 1px solid #e9e9e9;
   }
 
  
