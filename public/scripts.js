@@ -150,6 +150,22 @@ const LightBox ={
   }
 }
 
+//FAZER O MODAL DA PAGINA DE RECEITAS  APARECER E DESAPARECER AO PASSAR O MOUSE
+const ModalCard ={
+  target: document.querySelectorAll('.modal'),
+  
+
+  appears(){
+    ModalCard.target.forEach(target => target.style.opacity = 1)
+    
+  },
+
+  desapears(){
+    ModalCard.target.forEach(target => target.style.opacity = 0)
+
+  }
+}
+
 
   //Esconder Ingredientes e modo de Preparo
 
@@ -219,6 +235,9 @@ formDelete.addEventListener("submit", function (event) {
     event.preventDefault()
   }
 })
+
+
+
 
 
 

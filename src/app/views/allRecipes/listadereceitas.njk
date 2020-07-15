@@ -6,7 +6,7 @@
 
         <div class="card">
             {%for recipe in recipes %}
-                <div class="recipes">
+                <div class="recipes" onmouseover="ModalCard.appears(event)" onmouseout="ModalCard.desapears(event)">
                     <div class="image" style="background-image:url('{{ recipe.img if recipe.img else '//placehold.it/450x400?text=RECEITA SEM FOTO' }}')"
                     >                   
 
@@ -62,7 +62,7 @@
                             </div>
                            </div>
 
-                            <a class="button" href="">VER RECEITA</a>
+                            <a class="button" href="/recipes/{{recipe.id}}">VER RECEITA</a>
 
 
                       </div>

@@ -1,6 +1,111 @@
 {% extends "layout.njk" %}
 
 {% block content %}
-    
+  
+    <div class="MoreViews">
+        <h2>RECEITAS DESTAQUES</h2>
+
+       
+        <div class="box-container">
+            {# SLIDER #}
+            <ul id="autoWidth" class="cs-hidden">
+                {%for recipe in recipes %}
+                {# -------- separacao de cada item ------ #}
+                <li class="item-a"> 
+                   <a href="#">
+                         {# slider box #}
+                    <div class="box">
+                        <img src="http://placehold.it/224x224?text=RECEITA SEM FOTO"  alt="">
+
+                        <div class="details">
+                            <h5>{{recipe.title}}</h5>
+                    
+                        </div>
+                
+                    </div>   
+                   </a> 
+                </li>
+                {% endfor %}
+            </ul> 
+
+        </div>
+    </div>
+
+
+       <div class="MoreViews">
+        <h2>Experimente</h2>
+
+       
+        <div class="box-container">
+            {# SLIDER #}
+            <ul id="autoWidth2" class="cs-hidden">
+                {%for recipe in recipes %}
+                {# -------- separacao de cada item ------ #}
+                <li class="item-a"> 
+                   <a href="#">
+                         {# slider box #}
+                    <div class="box">
+                         <div class="image" style="background-image:url('{{ recipe.img if recipe.img else '//placehold.it/450x400?text=RECEITA SEM FOTO' }}')"
+                         >                   
+
+                        </div>
+
+                        <div class="nota">
+                        <i class="material-icons">star_border</i>
+                        <i class="material-icons">star_border</i>
+                        <i class="material-icons">star_border</i>
+                        <i class="material-icons">star_border</i>
+                        <i class="material-icons">star_border</i>
+                            {# Trocar para este que esta comentado #}
+                        {# <i class="material-icons">star_rate</i> #}
+
+                    </div>
+
+                        <div class="details">
+                            <h5>{{recipe.title}}</h5>
+                    
+                        </div>
+                
+                    </div>   
+                   </a> 
+                </li>
+                {% endfor %}
+            </ul> 
+
+        </div>
+    </div>
+
+
+
+       <div class="MoreViews">
+        <h2>Você também pode gostar</h2>
+
+       
+        <div class="box-container">
+            {# SLIDER #}
+            <ul id="autoWidth3" class="cs-hidden">
+                {%for recipe in recipes %}
+                {# -------- separacao de cada item ------ #}
+                <li class="item-a"> 
+                   <a href="#">
+                         {# slider box #}
+                    <div class="box">
+                        <img src="http://placehold.it/224x224?text=RECEITA SEM FOTO"  alt="">
+
+                        <div class="details">
+                            <h5>{{recipe.title}}</h5>
+                    
+                        </div>
+                
+                    </div>   
+                   </a> 
+                </li>
+                {% endfor %}
+            </ul> 
+
+        </div>
+    </div>
+
+
 
 {% endblock content %}
