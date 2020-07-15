@@ -3,6 +3,14 @@ const { FileSystemLoader } = require('nunjucks')
 
 
 module.exports = {
+
+    all(){
+        return db.query(`
+            SELECT * FROM recipes 
+            ORDER BY created_at DESC
+        `)
+    },
+
     create(data){
         const query = `
             INSERT INTO recipes (

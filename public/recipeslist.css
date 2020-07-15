@@ -1,0 +1,166 @@
+
+:root {
+    --primary-color:#fd951f;
+    --secondary-color:#0751db;
+}
+
+
+.recipe-list h2{
+
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #8f0000;
+    text-shadow: 3px 3px 1px #c4c4c4;
+    margin: 15px 0;
+}
+
+.recipe-list .card{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-gap: 16px;
+}
+
+.recipe-list .recipes{
+    width: 280px;
+    max-width: 280px;
+    position: relative;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid  #d4d4d4;
+    box-shadow: 2px 2px 4px #d4d4d4;
+
+}
+
+
+.recipe-list .recipes .image{
+    padding-top:50%;
+    width: 100%;
+    height: 220px;
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.recipe-list .recipes .nota{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2px;
+    height: 30px;
+}
+
+
+.recipe-list .recipes .nota i{
+    color: var(--primary-color);
+    font-size: 26px;
+}
+
+
+.recipe-list .recipes h3{
+    color: #999;
+    font-size: 18px;
+    margin: 10px 0;
+    text-transform: uppercase;
+    padding: 0 8px;
+
+}
+
+.recipe-list .recipes .receitainfo{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    color: rgb(251, 105, 0);
+}
+
+
+.recipe-list .recipes .username{
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #999;
+}
+
+.recipe-list .recipes .username span{
+    color: #dd3737;
+}
+
+
+.recipe-list .recipes .receitainfo .icon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.recipe-list .recipes .receitainfo .icon p{
+    font-size: 14px;
+    margin-top: 4px;
+    font-weight: 900;
+
+}
+
+.recipe-list .recipes .receitainfo .icon i{
+    font-size: 24px;
+    margin-top: 4px;
+    font-weight: 900;
+
+}
+
+
+.recipe-list .recipes .modal{
+    width: 100%;
+    height: 175px;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    bottom: 0;
+    opacity: 0;
+    display: none;
+}
+
+.recipe-list .recipes .receitainfo-modal {
+    display: flex;
+}
+
+
+.recipe-list .recipes .receitainfo-modal .icon-modal{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
+.recipe-list .recipes .receitainfo-modal .icon-modal i{
+    color: #dd3737;
+}
+
+
+
+.recipe-list .recipes .receitainfo-modal .icon-modal span{
+    color: #dd3737;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.recipe-list .recipes .receitainfo-modal .icon-modal p{
+    color: #999;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+
+
+
+

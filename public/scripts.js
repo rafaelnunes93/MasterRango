@@ -94,6 +94,7 @@ const PhotosUpload = {
     photoDiv.remove()
   },
 
+
   removeOldPhoto(event){
     const photoDiv = event.target.parentNode
 
@@ -108,6 +109,47 @@ const PhotosUpload = {
   }
   
   }
+
+const ImageGallery = {
+  highlight: document.querySelector('.gallery .highlight img'),
+  previews: document.querySelectorAll('.gallery-preview img'),
+
+  setImage(e){
+
+
+    const {target} = e
+
+    ImageGallery.previews.forEach(preview => preview.classList.remove('active'))
+
+    target.classList.add('active')
+
+    ImageGallery.highlight.src = target.src
+    LightBox.image.src = target.src
+  }
+
+}
+
+
+const LightBox ={
+  target: document.querySelector('.lightbox-target'),
+  image: document.querySelector('.lightbox-target img'),
+  closeButton: document.querySelector('.lightbox-target a.lightbox-close'),
+  open(){
+    LightBox.target.style.opacity = 1
+    LightBox.target.style.top = 0;
+    LightBox.target.style.bottom = 0;
+    LightBox.closeButton.style.top = "1%";
+    
+  },
+
+  close(){
+    LightBox.target.style.opacity = 0
+    LightBox.target.style.top = "-100%"
+    LightBox.closeButton.style.top = "0";
+
+  }
+}
+
 
   //Esconder Ingredientes e modo de Preparo
 

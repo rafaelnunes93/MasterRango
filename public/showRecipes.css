@@ -17,7 +17,7 @@
     justify-content: center;
     text-align: center;
     border: 1px solid  #d4d4d4;
-    box-shadow: 2px 5px 4px #d4d4d4;;
+    box-shadow: 2px 5px 4px #d4d4d4;
     text-transform: uppercase;
     color: #CEB98E;
 }
@@ -39,6 +39,10 @@
 .recipe-single  .highlight {
   height: 400px;
   padding: 10px;
+}
+
+.recipe-single  .highlight img {
+  border-radius: 0 !important;
 
 }
 
@@ -293,4 +297,61 @@
     border-top: 1px solid #e9e9e9;
   }
 
+
+  /* Modal lightbox-targer gallery */
+  .recipe-single .highlight .lightbox-target{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    overflow: hidden;
+    z-index: 100;
+
+    top: -100%;
+    left: 0;
+    opacity: 0;
+
+    transition: opacity 400ms;
+  }
+
+  .recipe-single .highlight .lightbox-target img{
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: #fff;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+
+    width: 90%;
+    height: 90%;
+
+    object-fit: contain;
+  }
  
+
+  .recipe-single .highlight .lightbox-target a.lightbox-close{
+    width:  70px;
+    height: 70px;
+    border-radius: 50%;
+
+    color: #fff;
+    background-color: rgb(240, 17, 17);
+    position: absolute;
+    right: 3%;
+    top: 0;
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 500ms;
+  }
+
+  .recipe-single .highlight .lightbox-target a.lightbox-close i{
+    font-size: 34px;
+  }

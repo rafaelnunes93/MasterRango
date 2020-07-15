@@ -1,13 +1,14 @@
 const express = require('express');
 const routes = express.Router()
 const recipesController = require('./app/controllers/RecipeController')
+const homeController = require('./app/controllers/HomeController')
 const multer = require('./app/middlewares/multer');
 
 
 
-routes.get('/',function(req, res){
-    return res.render("layout.njk");
-})
+routes.get('/',homeController.index);
+
+routes.get('/receitas',homeController.listadereceitas)
 
 //WEB
 routes.get('/recipes/create',recipesController.create)
