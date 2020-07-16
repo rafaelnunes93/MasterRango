@@ -52,3 +52,95 @@
 .details h5{
     margin-top: 10px;
 }
+
+
+/* AREA DE DICAS */
+.tips-container{
+    margin: 16px auto;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-container h3{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #fff;
+    text-shadow: 1px 1px -1px #c4c4c4;
+    margin: 10px 0;
+    width: 100%;
+    background-color: #dd3737;
+    text-align: center;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+
+
+
+.box-tips{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tips-cards{
+    width: 370px;
+    height: 295px;
+    border: 1px solid #d4d4d4;
+    box-shadow: 1px 1px 1px #d4d4d4;
+    margin: 5px;
+    position: relative;
+}
+
+.tips-cards .info{
+    margin: 2px;
+    text-align: center;
+}
+
+
+.readmore {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    bottom: 0;
+    position: absolute;
+}
+
+.readmore a{
+    background-color: #dd3737;
+    color: #FFF;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+/* INFO TOP USUARIOS */
+
+.box-container-user ul{
+    display: flex;
+}
+
+
+.user-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #dd3737;
+}
+
+
+.user-details h5{
+   font-size: 16px;
+}
+
+.user-details p{
+    font-size: 14px;
+ }
+
+ .user-details span{
+    font-size: 16px;
+    font-weight: 600;
+ }
