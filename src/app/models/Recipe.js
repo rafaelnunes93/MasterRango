@@ -7,7 +7,7 @@ module.exports = {
     all(){
         return db.query(`
             SELECT * FROM recipes 
-            ORDER BY created_at DESC
+            ORDER BY created_at DESC 
         `)
     },
 
