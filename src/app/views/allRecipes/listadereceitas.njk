@@ -1,76 +1,8 @@
 {% extends "layout.njk" %}
+{% import "parts/section-recipes.njk" as section %}
 
 {% block content %}
-    <section class="recipe-list container">
-        <h2>Todas as Receitas</h2>
-
-        <div class="card">
-            {%for recipe in recipes %}
-                <div class="recipes" onmouseover="ModalCard.appears(event)" onmouseout="ModalCard.desapears(event)">
-                    <div class="image" style="background-image:url('{{ recipe.img if recipe.img else '//placehold.it/450x400?text=RECEITA SEM FOTO' }}')"
-                    >                   
-
-                    </div>
-
-                    <div class="nota">
-                        <i class="material-icons">star_border</i>
-                        <i class="material-icons">star_border</i>
-                        <i class="material-icons">star_border</i>
-                        <i class="material-icons">star_border</i>
-                        <i class="material-icons">star_border</i>
-                            {# Trocar para este que esta comentado #}
-                        {# <i class="material-icons">star_rate</i> #}
-
-                    </div>
-
-                    <h3>{{recipe.title}}</h3>
-
-                    <div class="receitainfo">
-                        <div class="icon">
-                            
-                             <i class="material-icons">timer</i>  
-                             <p> {{recipe.time}} Min </p>
-                        </div>
-                        <div class="icon">
-                            
-                             <i class="material-icons">room_service</i>  
-                           <p > {{recipe.quantity}} Porções  </p>
-                        </div>
-
-                    </div>
-
-                    <p class="username">POR:<span> Rafael nunes dos Santos</span></p>
-
-                        {# MODAL baixo do card #}
-                    <div class="modal">
-                           <div  class="receitainfo-modal">
-                                <div class="icon-modal">                           
-                                
-                                    <i class="material-icons">local_fire_department</i>  
-
-                                <p> Dificuldade :</p>
-                                    
-                                    <span> {{recipe.dificulty}}</span>
-                            </div>
-                            <div class="icon-modal">
-                                
-                                <i class="material-icons">favorite</i>  
-
-                                <p> LIKES</p>
-                                    
-                                    <span> 999999 {{recipe.favorite}}</span>
-                            </div>
-                           </div>
-
-                            <a class="button" href="/recipes/{{recipe.id}}">VER RECEITA</a>
-
-
-                      </div>
-        
-                </div>
-            {%endfor%}
-
-        </div>
-    </section>
+   
+{{section.recipes('Todas as Receitas', 'container', recipes)}}
 
 {% endblock content %}

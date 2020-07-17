@@ -1,5 +1,6 @@
 const db = require('../../config/db')
 const { FileSystemLoader } = require('nunjucks')
+const SearchController = require('../controllers/SearchController')
 
 
 module.exports = {
@@ -89,5 +90,36 @@ module.exports = {
         return db.query(`
             SELECT * FROM files WHERE recipes_id = $1
             `,[id])
+    },
+
+    search(params){
+        const {filter, category} = params
+
+        let query = "",
+            filterQuery = `WHERE`
+
+        if(category){
+            filterQuery = `${filterQuery}
+            recipes_category_id = ${category}  
+            AND  
+            `
+        }
+
+        filterQuery =`
+            ${filterQuery}
+            recipes.title ilike '%${filter}%'
+            OR recipes.ingredients ilike '%${filter}%'
+        `
+
+        
+            query = `
+                SELECT recipes.*,
+                categories.name AS category_name
+              FROM recipes
+              LEFT JOIN categories ON (categories.id = recipes.category_id)
+              ${filterQuery}
+            `
+
+            return db.query(query)
     }
 }
