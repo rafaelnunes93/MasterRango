@@ -11,9 +11,9 @@ CREATE TABLE "recipes" (
   "ingredients" text[],
   "preparation" text[],
   "description" text NOT NULL,
-  "quantity" int DEFAULT 0,
+  "quantity" int ,
   "time" int,
-  "status" int DEFAULT 1,
+  "status" int DEFAULT 0,
   "dificulty" text NOT NULL,
   "created_at" timestamp DEFAULT (now())
 );
@@ -60,7 +60,7 @@ CREATE TABLE "users" (
   "name" text NOT NULL,
   "email" text UNIQUE NOT NULL,
   "password" text NOT NULL,
-  "levelUser_id" int NOT NULL,
+  "levelUser_id" int DEFAULT 1 NOT NULL,
   "reset_token" text,
   "is_admin" boolean DEFAULT false,
   "created_at" timestamp DEFAULT (now())
@@ -82,3 +82,17 @@ INSERT INTO level(name) VALUES ('master chef');
 
 ALTER TABLE "recipes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 ALTER TABLE "users" ADD FOREIGN KEY ("levelUser_id") REFERENCES "level" ("id");
+
+
+
+-- tabela que controla a sessao do usuario
+ 
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+  "sess" json NOT NULL,
+  "expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+ALTER TABLE "session" 
+ADD CONSTRAINT "session_pkey" 
+PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;

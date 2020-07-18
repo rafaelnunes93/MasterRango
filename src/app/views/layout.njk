@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
 
         {% block head %}
             <title>Master Rango</title>
         {% endblock %}
 
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="/styles.css">
-        <link rel="stylesheet" href="/showRecipes.css">
-        <link rel="stylesheet" href="/recipeslist.css">
-        <link rel="stylesheet" href="/pageindex.css">
-        <link rel="stylesheet" href="/lightslider.css">
-        <link rel="stylesheet" href="/searchPage.css">
-         <script type="text/javascript" src="/JQuery3.3.1.js"></script>
-         <script type="text/javascript" src="/lightslider.js"></script>
-        
+        {# INCLUINDO OS STILES CSS QUE ESTA NA PASTA PARTS/STYLES.NJK #}
+        {% include "parts/styles.njk" %}
+
     </head>
     <body>
 
+        {# INCLUINDO AS MENSAGENS DE ERRO #}
+        {% include "parts/messages.njk" %}
+
         {% include "parts/header.njk" %}
-       
+
 
         {%block content%}
 
         {%endblock%}
 
         {% include "parts/footer.njk" %}
-        
+
     </body>
 </html>

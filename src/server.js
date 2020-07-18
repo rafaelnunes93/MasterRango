@@ -3,6 +3,10 @@ const nunjucks = require('nunjucks')
 const routes = require("./routes");
 const server = express();
 const methodOverrride = require('method-override')
+const session = require('./config/session')
+
+
+server.use(session)
 
 // responsavel por funcionar o req body
 server.use(express.urlencoded({extended:true}))

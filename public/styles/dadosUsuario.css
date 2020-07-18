@@ -1,0 +1,104 @@
+/* TODA A PARTE ADMINISTRATIVA DO USUARIO */
+
+.users-options{
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    margin-top: 48px;
+}
+
+
+.users-options aside{
+    margin-right: 10px;
+}
+
+
+.users-options .header{
+
+    font-size: 14px;
+    color: #f30;
+
+    width: 100%;
+    padding: 10px;    
+
+    border: 1px solid #d4d4d4;
+    box-shadow: 2px 1px -1px #d4d4d4;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.users-options .header img{
+    width: 150px;
+    height:150px;
+    border-radius: 50%;
+}
+
+.users-options .header .userInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+
+.users-options .header h4 {
+    text-transform: capitalize;
+    text-align: center;
+
+    font-size: 18px;
+    color: #8f0000;
+
+    margin-bottom: 8px;
+}
+
+
+.users-options .menu{
+    width: 100%;
+    padding: 10px;    
+
+    border: 1px solid #d4d4d4;
+    box-shadow: 2px 5px 4px #d4d4d4;
+    border-radius: 5px;
+}
+
+
+.users-options nav ul{   
+    width: 100%;
+    padding: 0 10px;
+}
+
+.users-options nav ul li{
+    margin:4px 0;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.users-options nav ul li:first-child{
+
+    border-top: 1px solid #d4d4d4;
+}
+
+.users-options nav ul li{
+    color: #6a6a6a;
+}
+
+
+.users-options nav ul li a{
+
+    color: #6a6a6a;
+    font-size: 14px;
+    font-weight: 300;
+   
+ }
+
+ .users-options nav ul li:hover{
+
+    background-color:  #d4d4d4;
+   
+ }
+
+ .conteudo{
+     width: 100%;
+     background-color: #8f0000;
+ }

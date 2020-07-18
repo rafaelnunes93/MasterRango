@@ -315,7 +315,7 @@ header div.container a {
             font-weight: bold;
             margin-bottom: 8px;
     }
-
+    form .item .input input,
     form .item input[type="text"],
     form .item input[type="number"],
     form .item textarea,
@@ -438,4 +438,15 @@ header div.container a {
 
     #photos-preview .photo i:hover{
         opacity: 1;
+    }
+
+
+
+    /* VALIDADE ERRORS  */
+
+    .input .error{
+        background-color: #e74c3c;
+        padding: 4px;
+        border-radius: 4px;
+        color: #FFF;
     }
