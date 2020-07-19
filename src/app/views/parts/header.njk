@@ -17,7 +17,7 @@
 
         </form>
        </div>
-
+    {% if not user %}
         <nav class="primary">
             <ul>
                 <li>
@@ -42,6 +42,65 @@
                 </li>
             </ul>
         </nav>
+
+        {% else %}
+
+         <nav class="primary">
+            <ul>
+                <li class="accounts">
+                    <a href="/accounts">                        
+                        {{user.name}}
+                        <i class="material-icons">keyboard_arrow_down</i>
+                    </a>
+                    
+                    <ul class="submenu">
+                        <li>
+                            <div class="menu-header">
+                                <div>
+                                     <img src="../images/chefimage.png" alt="">
+                                </div>
+
+                                <div class="menu-info">
+                                    <p>Ola,</p>
+                                    <p> {{user.name}}</p>
+                                    <p>Seu Nivel: {{user.levelUser_id}}</p>
+                                   <p>Master Pontos: {{user.score}}</p> 
+                                </div>
+                            </div>
+                               
+                        </li>
+
+                        <li>
+                            <a href="/users">Minha Conta</a>
+                        </li>
+
+                        <li>
+                            <form action="/users/logout" method="POST">
+                                <button>SAIR</button>
+                            </form>
+                        </li>
+                    </ul>
+
+                </li>                
+
+                <li>
+                    <a href="/login">
+                        <i class="material-icons">star</i>
+                        Favoritas
+                    </a>
+                </li>
+
+                <li>
+                    <a href=" /ads/create">
+                        <i class="material-icons">list_alt</i>
+                        Envie uma Nova Receita
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        {% endif %}
+
            
 
     </div>

@@ -11,7 +11,7 @@ const Validador = require('../app/validators/user')
 // login/logout
 // routes.get('/login',SessionController.loginForm)
 // routes.post('/login',SessionController.login)
-// routes.post('/logout',SessionController.logout)
+routes.post('/logout',SessionController.logout)
 
 // Reset password/forgot
 // routes.get('/forgot-password',SessionController.forgotForm)
@@ -27,10 +27,11 @@ routes.post('/register',Validador.post,UserController.post)
 
 
 routes.get('/',UserController.show)
-// routes.put('/',UserController.update)
+routes.get('/edit',Validador.edit,UserController.edit)
+routes.put('/',Validador.update,UserController.update)
 // routes.delete('/',UserController.delete)
 
-
+// routes.get('/:id',UserController.show)
 
 module.exports = routes
 

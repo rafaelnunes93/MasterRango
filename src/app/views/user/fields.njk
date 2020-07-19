@@ -32,17 +32,20 @@
     </div>
 </div>
 
-
 {% if not user.id %}
 
 <div class="item">
-    <div>Confirme a Senha:</div>
+    <div>Repetir Senha:</div>
     <div class="input">
-        <input type="password" 
-        name="passwordRepeat" 
-        placeholder="Senha"/>
+        <input
+        type="password"
+        name="passwordRepeat"
+        placeholder="Repita a senha"
+        required
+        >
+    
     </div>
 </div>
 
+{%endif%}
 
-{% endif%}
