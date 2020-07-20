@@ -23,12 +23,12 @@ routes.use('/users',users)
 
 
 //ALIAS
-routes.get('/ads/create',function(req,res){
+routes.get('/receitas/enviar',function(req,res){
     return res.redirect("/recipes/create")
 })
 
 routes.get('/accounts',function(req,res){
-    return res.redirect("/users/register")
+    return res.redirect("/users/login")
 })
 
 

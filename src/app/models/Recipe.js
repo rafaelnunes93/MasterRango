@@ -31,7 +31,7 @@ module.exports = {
 
         const values = [
             data.category_id,
-            data.user_id || 1,
+            data.user_id || 33,
             data.title,
             data.ingredients,
             data.preparation,

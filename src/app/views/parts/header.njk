@@ -17,25 +17,25 @@
 
         </form>
        </div>
-    {% if not user %}
+    {% if not session.userId %}
         <nav class="primary">
             <ul>
                 <li>
-                    <a href="/accounts">
+                    <a href="/users/register">
                         <i class="material-icons">add</i>
                         Crie a sua conta
                     </a>
                 </li>                
 
                 <li>
-                    <a href="/login">
+                    <a href="/accounts">
                         <i class="material-icons">login</i>
                         Entrar
                     </a>
                 </li>
 
                 <li>
-                    <a href=" /ads/create">
+                    <a href="/receitas/enviar">
                         <i class="material-icons">list_alt</i>
                         Envie uma Nova Receita
                     </a>
@@ -62,7 +62,7 @@
 
                                 <div class="menu-info">
                                     <p>Ola,</p>
-                                    <p> {{user.name}}</p>
+                                    <p> {{session.name}}</p>
                                     <p>Seu Nivel: {{user.levelUser_id}}</p>
                                    <p>Master Pontos: {{user.score}}</p> 
                                 </div>
@@ -91,7 +91,7 @@
                 </li>
 
                 <li>
-                    <a href=" /ads/create">
+                    <a href="/receitas/enviar">
                         <i class="material-icons">list_alt</i>
                         Envie uma Nova Receita
                     </a>

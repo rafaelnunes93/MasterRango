@@ -1,0 +1,37 @@
+.login.container,
+.password.container{
+    box-shadow: 2px 5px 4px #d4d4d4;
+}
+
+.login.container .fields,
+.password.container .item{
+    margin-bottom: 32px;
+    margin-top: 32px;
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+} 
+
+.login.container .form-footer ul{
+    margin-top: 32px;
+    width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+} 
+
+.login.container .form-footer ul li a{
+  color: #dd3737;
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 23px;
+} 
+
+.login.container .form-footer ul li a:hover{
+    font-weight: bold;
+    box-shadow: 2px 5px 4px #d4d4d4;
+} 
+
+.header h2{
+    color: #fd951f;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
