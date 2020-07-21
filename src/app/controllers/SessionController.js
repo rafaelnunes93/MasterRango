@@ -2,6 +2,8 @@ const crypto = require('crypto')
 const User = require('../models/User')
 const mailer = require('../../lib/mailer')
 
+const {hash} = require('bcryptjs')
+
 module.exports = {
 
     loginForm(req,res){
@@ -31,7 +33,10 @@ module.exports = {
     async forgot(req,res){
         const user = req.user
 
-        //Um tokem para o Usuario recuperar a senha
+
+        try {
+
+            //Um tokem para o Usuario recuperar a senha
         const token =  crypto.randomBytes(20).toString("hex")
 
         //Tempo para expiração do token
@@ -66,7 +71,56 @@ module.exports = {
         return res.render("session/forgot-password", {
             success: "Verifique o email cadastrado para resetar sua senha !"
         })
+            
+        } catch (error) {
+            console.error(erro)
+            return res.render("session/forgot-password", {
+                error: "Algo deu errado, tente novamente!"
+            })
+        }
+
+        
     
 
+    },
+
+    resetForm(req,res){
+        return res.render("session/password-reset", { token: req.query.token})
+    },
+
+    async reset(req, res){
+        const {user} = req
+        const { password,token } = req.body
+
+        try {
+            // Criar um novo hash de senha
+            const newPassword = await hash(password, 8)
+
+            //Atualiza o usuario
+            await User.update(user.id,{
+                password: newPassword,
+                reset_token: "",
+                reset_token_expires: "",
+            })
+
+            //Avisa o usuario que ele tem uma nova senha
+
+            return res.render("session/login",{
+                user: req.body,
+                secess: "Senha atualizada, Realize seu login"
+            })
+
+
+        } catch (error) {
+            console.error(error)
+            return res.render("session/password-reset", {
+                user:req.body,
+                token,
+                error: "Algo deu errado, tente novamente!"
+            })
+        }
+
     }
+
+
 }
