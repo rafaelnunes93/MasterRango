@@ -34,6 +34,7 @@ module.exports = {
             return res.send('Por Favor, Envie pelo menos uma imagem.')
      
 
+        req.body.user_id = req.session.userId
         let results = await Recipe.create(req.body)
         const recipesId = results.rows[0].id
 

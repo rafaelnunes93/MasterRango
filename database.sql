@@ -49,9 +49,7 @@ CREATE TABLE "files" (
 );
 
 
-
 ALTER TABLE "recipes" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
-
 ALTER TABLE "files" ADD FOREIGN KEY ("recipes_id") REFERENCES "recipes" ("id");
 
 
@@ -61,6 +59,7 @@ CREATE TABLE "users" (
   "email" text UNIQUE NOT NULL,
   "password" text NOT NULL,
   "levelUser_id" int DEFAULT 1 NOT NULL,
+  "score" int DEFAULT 1 NOT NULL,
   "reset_token" text,
   "reset_token_expires" text,
   "is_admin" boolean DEFAULT false,
@@ -97,3 +96,20 @@ WITH (OIDS=FALSE);
 ALTER TABLE "session" 
 ADD CONSTRAINT "session_pkey" 
 PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+
+-- COLOCANDO AS CONSTRAINTS PARA O MODO CASCADE
+ALTER TABLE "recipes"
+DROP CONSTRAINT recipes_user_id_fkey,
+ADD CONSTRAINT recipes_user_id_fkey
+FOREIGN KEY (user_id)
+REFERENCES "users" (id)
+ON DELETE CASCADE;
+
+
+ALTER TABLE "files"
+DROP CONSTRAINT files_recipes_id_fkey,
+ADD CONSTRAINT files_recipes_id_fkey
+FOREIGN KEY (recipes_id)
+REFERENCES "recipes" (id)
+ON DELETE CASCADE;

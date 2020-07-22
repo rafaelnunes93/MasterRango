@@ -5,7 +5,8 @@ const multer = require('../app/middlewares/multer');
 const recipesController = require('../app/controllers/RecipeController')
 const seachController = require('../app/controllers/SearchController')
 
-const {onlyUsers} = require('../app/middlewares/session')
+const {onlyUsers, onlyAdmin} = require('../app/middlewares/session')
+
 
 
 //SEARCH
