@@ -1,6 +1,4 @@
-const Category = require('../models/Category')
 const Recipe = require('../models/Recipe')
-const File = require('../models/File');
 
 module.exports = {   
 
@@ -20,25 +18,25 @@ module.exports = {
             params.category = category
         }
 
-        results = await Recipe.search(params)
+        let recipes = await Recipe.search(params)
 
         async function getImage(recipesId){
-            let results = await Recipe.files(recipesId)
-            const files = results.rows.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`)
+            let files = await Recipe.files(recipesId)
+            files = files.map(file => `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`)
 
             return files[0]
         }
 
-        const recipesPromise =  results.rows.map(async recipe =>{
+        const recipesPromise =  recipes.map(async recipe =>{
             recipe.img = await getImage(recipe.id)
             return recipe
         })
 
-        const recipes = await Promise.all(recipesPromise)
+        recipes = await Promise.all(recipesPromise)
 
         const search = {
             term: req.query.filter,
-            total:recipes.lenght
+            total:recipes.length
         }
 
         const categories = recipes.map(recipe => ({

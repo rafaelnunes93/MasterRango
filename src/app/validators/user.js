@@ -28,9 +28,8 @@ if(fillAllFields){
 //check se o usuario ja existe (email)
 
 let {email, password , passwordRepeat} = req.body
-const user = await User.findOne({
+const user =  await User.findOne({
     where: {email}
-
 })
 
 if(user) return res.render('user/register',{

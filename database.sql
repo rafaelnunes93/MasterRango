@@ -1,3 +1,6 @@
+-- DELETA TABELAS PADROES
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public
 
 DROP DATABASE IF EXISTS masterrangodb;
 
@@ -48,7 +51,7 @@ CREATE TABLE "files" (
   "recipes_id" int 
 );
 
-
+-- CRIANDO CHAVES ESTRANGEIRAS
 ALTER TABLE "recipes" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
 ALTER TABLE "files" ADD FOREIGN KEY ("recipes_id") REFERENCES "recipes" ("id");
 
@@ -113,3 +116,12 @@ ADD CONSTRAINT files_recipes_id_fkey
 FOREIGN KEY (recipes_id)
 REFERENCES "recipes" (id)
 ON DELETE CASCADE;
+
+
+Delete from recipes;
+Delete from users;
+delete from files;
+
+alter sequence recipes_id_seq Restart with 1;
+alter sequence users_id_seq Restart with 1;
+alter sequence files_id_seq Restart with 1;

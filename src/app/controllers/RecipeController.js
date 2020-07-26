@@ -1,26 +1,23 @@
+const { unlinkSync } = require('fs')
+
 const Category = require('../models/Category')
 const Recipe = require('../models/Recipe')
 const File = require('../models/File');
 
 module.exports = {
-    create(req,res){
-
-         //Pegar Categorias
-         Category.all()
-         .then(function(results){
- 
-             const categories = results.rows
- 
-             return res.render("recipes/create.njk",{ categories })
-         }).catch(function(err){
- 
-             throw new Error(err);
-             
-         })
+    async create(req,res){
+        try {
+            const categories = await Category.findAll()
+            return res.render("recipes/create",{ categories })            
+        } catch (error) {
+            console.error(error)
+        }
     },
 
     async post(req,res){
-        //Logica de Salvar
+
+        try {
+             //Logica de Salvar
 
         const keys = Object.keys(req.body)
 
@@ -32,63 +29,85 @@ module.exports = {
 
         if(req.files.length == 0)
             return res.send('Por Favor, Envie pelo menos uma imagem.')
-     
 
-        req.body.user_id = req.session.userId
-        let results = await Recipe.create(req.body)
-        const recipesId = results.rows[0].id
+            const { category_id, title, ingredients, preparation , description, 
+            quantity,time, status , dificulty} = req.body
+
+            const recipes_id = await Recipe.create({
+                category_id,
+                user_id:req.session.userId, 
+                title,
+                ingredients:[{ingredients}],
+                preparation,
+                description,
+                quantity,
+                time,
+                status,
+                dificulty
+            })
 
         const filesPromise = req.files.map(file =>
-            File.create({name: file.filename, path: file.path, recipes_id:recipesId }))
+            File.create({name: file.filename, path: file.path, recipes_id }))
        await Promise.all(filesPromise)
 
 
             //lembrar de mudar para redirecionar para a pagina inicial (Index)
-        return res.redirect(`/recipes/${recipesId}`)
+        return res.redirect(`/recipes/${recipes_id}`)
+            
+        } catch (error) {
+            console.error(error)
+        }       
 
     },
 
     async show(req,res){
 
-        let results = await Recipe.find(req.params.id)
-        const recipes = results.rows[0]
+        try {
+            let recipes = await Recipe.find(req.params.id)
 
-        if(!recipes) return res.send("Receita nao encontrada")
-        
-        
+            if(!recipes) return res.send("Receita nao encontrada")
 
-        results = await Recipe.files(recipes.id)
-        const files = results.rows.map(file => ({
-            ...file,
-            src: `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`
-        }))
+            let files = await Recipe.files(recipes.id)
+            files = files.map(file => ({
+                ...file,
+                src: `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`
+            }))
 
-        return res.render("recipes/show",{recipes, files})
+            return res.render("recipes/show",{recipes, files})            
+        } catch (error) {
+            console.error(error)
+        }        
     },
 
     async edit(req,res){
-        let results = await Recipe.find(req.params.id)
-        const recipe = results.rows[0]
 
-        if(!recipe) return res.send("recipe not found")       
+        try {
+            const recipe = await Recipe.find(req.params.id)
 
-        // get categorias 
-        results = await Category.all()
-        const categories = results.rows
+            if(!recipe) return res.send("recipe not found")       
 
-        // get images
-        results = await Recipe.files(recipe.id)
-        let files = results.rows
-        files = files.map(file => ({
-            ...file,
-            src: `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`
-        }))
+            // get categorias 
+            const categories = await Category.findAll()
 
-        return res.render("recipes/edit.njk",{recipe,categories,files})
+            // get images
+            let files = await Recipe.files(recipe.id)
+            files = files.map(file => ({
+                ...file,
+                src: `${req.protocol}://${req.headers.host}${file.path.replace("public","")}`
+            }))
+
+            return res.render("recipes/edit",{recipe,categories,files})
+            
+        } catch (error) {
+            console.error(error)
+        }
+
+        
     },
 
     async put(req,res){
 
+        try {
 
             const keys = Object.keys(req.body)
 
@@ -98,26 +117,40 @@ module.exports = {
                 }
             }       
 
-        if(req.files.length != 0){
-            const newFilesPromise = req.files.map(file =>
-                    File.create({...file, recipes_id: req.body.id }))
+            if(req.files.length != 0){
+                const newFilesPromise = req.files.map(file =>
+                        File.create({...file, recipes_id: req.body.id }))
 
-                    await Promise.all(newFilesPromise)
+                        await Promise.all(newFilesPromise)
+            }
+
+            if(req.body.removed_files){
+                const removedFiles = req.body.removed_files.split(",")
+                const lastIndex = removedFiles.length - 1
+                removedFiles.splice(lastIndex, 1)
+
+                const removedFilesPromise = removedFiles.map(id => File.delete(id))
+
+                await Promise.all(removedFilesPromise)
+            }
+
+            await Recipe.update(req.body.id ,{
+                category_id: req.body.category_id,
+                title: req.body.title,
+                ingredients: req.body.ingredients,
+                preparation: req.body.preparation,
+                description: req.body.description,
+                quantity: req.body.quantity,
+                time: req.body.time,
+                status: 0,
+                dificulty: req.body.dificulty
+            })
+
+            return res.redirect(`recipes/${req.body.id}`)
+            
+        } catch (error) {
+            console.error(error)
         }
-
-        if(req.body.removed_files){
-            const removedFiles = req.body.removed_files.split(",")
-            const lastIndex = removedFiles.length - 1
-            removedFiles.splice(lastIndex, 1)
-
-            const removedFilesPromise = removedFiles.map(id => File.delete(id))
-
-            await Promise.all(removedFilesPromise)
-        }
-
-        await Recipe.update(req.body)
-
-        return res.redirect(`recipes/${req.body.id}`)
 
     },
 
